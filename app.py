@@ -11,7 +11,7 @@ def analyze_text(file_name):
     file_name(str): The name of input file in the current directory
 
     :return
-    text(dict): Dictionary containing information of text analysis of the input file
+    text(dict): Dictionary containing information of text analysis of the input file,
 
     if file not found it will return message indicating input file error
     '''

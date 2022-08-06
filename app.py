@@ -8,10 +8,10 @@ def analyze_text(file_name):
     Analyze text file data according to different measures
 
     :param
-    file_name(str) : The name of input file in the current directory
+    file_name (str): The name of input file in the current directory
 
     :return
-    text(dict): Dictionary containing information of text analysis of the input file
+    text (dict): Dictionary containing information of text analysis of the input file
 
     if file not found it will return message indicating input file error
     '''

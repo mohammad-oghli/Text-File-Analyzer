@@ -45,6 +45,6 @@ ____________Summary______________
    Estimate file size: 2.31 KB
 </pre>
 
-**Note**: Daisi is a Cloud Computing platform running Python serverless functions.
+Finally, **Daisi** is a Cloud Computing platform running Python serverless functions.
 
 For more info check the documentation link: https://doc.daisi.io/

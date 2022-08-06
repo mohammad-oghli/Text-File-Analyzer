@@ -3,7 +3,7 @@
 Python function as a web service to analyze text file data according to different measures and return detailed information about it.
 
 It will calculate and the following information:
-Total number of words, total number of letters, total number of lines, average words per line, average characters per line, average characters per word, most common words, most common letters, unique words, least common letters, longest word, file size according in KB.
+Total number of words, total number of letters, total number of lines, average words per line, average characters per line, average characters per word, most common words, most common letters, unique words, least common letters, longest word, file size in KB.
 
 How to call it from Python:
 
@@ -13,7 +13,7 @@ Step 1 : Load the Daisi
 import pydaisi as pyd
 text_file_analyzer = pyd.Daisi("oghli/Text File Analyzer")
 </pre>
-Step 2 : call the `text_file_analyzer` end point, passing input file name string to process and analyze text data
+Step 2 : call the `text_file_analyzer` end point, passing input file download link to process and analyze text data
 
 <pre>
 text_analytics = text_file_analyzer.analyze_text('test.txt').value
@@ -22,7 +22,7 @@ text_analytics
 
 returns a dictionary containing detailed information about text file.
 
-**Note**: Input text file should be in the current directory of the python script file.
+**Note**: Input text file link should be valid download link of the file.
 
 Step 3 : print text file analysis summary 
 <pre>

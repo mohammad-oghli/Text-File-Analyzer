@@ -1,9 +1,10 @@
+import  urllib.request
 from collections import defaultdict
 from collections import Counter
 import re
 
 
-def analyze_text(file_name):
+def analyze_text(file_url):
     '''
     Analyze text file data according to different measures
 
@@ -34,9 +35,13 @@ def analyze_text(file_name):
     words = defaultdict(lambda: 0, words)
     chars = defaultdict(lambda: 0, chars)
     try:
-        file = open(file_name, encoding='utf-8')
+        # for reading input file in the current directory
+        #file = open(file_url, encoding='utf-8')
+        # reading input file from download url
+        file = urllib.request.urlopen(file_url)
         # perform file operations
         for line in file:
+            line = line.decode('utf-8')
             n_char += len(line)
             line = re.sub(r'[^a-zA-Z]', ' ', line)
             line = line.split()
@@ -65,7 +70,7 @@ def analyze_text(file_name):
                     less_chars.append(key)
         file.close()
     except FileNotFoundError:
-        msg = "Sorry, the file " + file_name + " does not exist."
+        msg = "Sorry, the requested file link is invalid."
         return msg
 
     top_words = Counter(words).most_common(3)
@@ -74,7 +79,7 @@ def analyze_text(file_name):
     f_size = round(n_char / 1024, 2)
 
     summary = f"""____________Summary______________
-   File Name: {file_name}
+   File Link: {file_url}
    Total words: {n_word}
    Total letters: {n_letter}
    Total lines: {n_line}
@@ -105,7 +110,7 @@ def analyze_text(file_name):
 
 
 if __name__ == "__main__":
-    analyze_result = analyze_text('test.txt')
+    analyze_result = analyze_text('https://drive.google.com/uc?export=download&id=1r1Urz_92YixjegWvaW_6cVTJQvGCOmGk')
     if type(analyze_result) is dict:
         summary = analyze_result['s']
         print(summary)

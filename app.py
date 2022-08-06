@@ -2,17 +2,19 @@ from collections import defaultdict
 from collections import Counter
 import re
 
-'''
-Analyze text file data according to different measures
-
-:param file_name : The name of input file in the current directory
-
-:return text: Dictionary containing information of text analysis of the input file
-
-if file not found it will return message indicating input file error
-'''
 
 def analyze_text(file_name):
+    '''
+    Analyze text file data according to different measures
+
+    :param
+    file_name(str) : The name of input file in the current directory
+
+    :return
+    text(dict): Dictionary containing information of text analysis of the input file
+
+    if file not found it will return message indicating input file error
+    '''
     text = {}
     words = {}
     s_words = {}

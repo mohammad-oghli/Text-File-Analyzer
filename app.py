@@ -1,4 +1,5 @@
-import  urllib.request
+import urllib.request
+import urllib.error
 from collections import defaultdict
 from collections import Counter
 import re
@@ -69,8 +70,11 @@ def analyze_text(file_url):
                 if value == 1:
                     less_chars.append(key)
         file.close()
-    except FileNotFoundError:
+    except urllib.error.URLError:
         msg = "Sorry, the requested file link is invalid."
+        return msg
+    except FileNotFoundError:
+        msg = "Sorry, the file does not exist."
         return msg
 
     top_words = Counter(words).most_common(3)

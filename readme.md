@@ -46,10 +46,44 @@ ____________Summary______________
    Estimate file size: 2.31 KB
 </pre>
 
+Print most common words with number of occurrences in text:
+<pre>
+text_analytics['top_words']
+</pre>
+
+Print most common short words (less than 4 letters) with number of occurrences:
+<pre>
+text_analytics['top_swords']
+</pre>
+
+Print most common letters with number of occurrences:
+<pre>
+text_analytics['top_chars']
+</pre>
+
+Print all unique words:
+<pre>
+text_analytics['u_words']
+</pre>
+
+Print the least used letters:
+<pre>
+text_analytics['lc_chars']
+</pre>
+
 You can also test it on any file link, check this text file sample: 
 
 https://drive.google.com/uc?export=download&id=1cQqW8p9tPHexhwS0Iw_Rs-lBgk8R47ri
 
+You can also call the function using `curl` in **git** command line or **terminal** using the following command:
+<pre>
+curl -X POST "https://app.daisi.io/pebble-api/pebbles/b82adc6f-6869-4b06-abe9-6d0fedb36ed8/compute/analyze_text" -H "Content-Type: application/json" -d '{"file_url": "_value_"}'
+</pre>
+
+just replace the `_value_` with the file link.
+
 Finally, **Daisi** is a Cloud Computing platform running Python serverless functions.
 
 For more info check the documentation link: https://doc.daisi.io/
+
+Don't forget to support me by staring the Daisi if you find it useful.

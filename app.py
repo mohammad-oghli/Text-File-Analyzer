@@ -10,7 +10,7 @@ def analyze_text(file_url):
     Analyze text file data according to different measures
 
     :param
-    file_url(str): Valid download link of the input file
+    file_url(str): Valid download link of the input text file
 
     :return
     text(dict): Dictionary containing information of text analysis of the input file,

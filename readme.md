@@ -16,7 +16,8 @@ text_file_analyzer = pyd.Daisi("oghli/Text File Analyzer")
 Step 2 : call the `text_file_analyzer` end point, passing input file download link to process and analyze text data
 
 <pre>
-text_analytics = text_file_analyzer.analyze_text('test.txt').value
+file_link = "https://drive.google.com/uc?export=download&id=1r1Urz_92YixjegWvaW_6cVTJQvGCOmGk"
+text_analytics = text_file_analyzer.analyze_text(file_link).value
 text_analytics
 </pre>
 
@@ -32,7 +33,7 @@ text_analytics['s']
 Output look like:
 <pre>
 ____________Summary______________
-   File Name: test.txt
+   File Link: https://drive.google.com/uc?export=download&id=1r1Urz_92YixjegWvaW_6cVTJQvGCOmGk
    Total words: 365
    Total letters: 1946
    Total lines: 11
@@ -44,6 +45,8 @@ ____________Summary______________
    Longest word: representatives
    Estimate file size: 2.31 KB
 </pre>
+
+You can also test it on any file link, check this text file sample: https://drive.google.com/uc?export=download&id=1cQqW8p9tPHexhwS0Iw_Rs-lBgk8R47ri
 
 Finally, **Daisi** is a Cloud Computing platform running Python serverless functions.
 

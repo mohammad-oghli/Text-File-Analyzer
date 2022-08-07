@@ -46,7 +46,7 @@ ____________Summary______________
    Estimate file size: 2.31 KB
 </pre>
 
-Print most common words with number of occurrences in text:
+Print most common words with number of occurrences:
 <pre>
 text_analytics['top_words']
 </pre>

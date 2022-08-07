@@ -37,9 +37,14 @@ def analyze_text(file_url):
     chars = defaultdict(lambda: 0, chars)
     try:
         # for reading input file in the current directory
-        #file = open(file_url, encoding='utf-8')
+        # file = open(file_url, encoding='utf-8')
         # reading input file from download url
         file = urllib.request.urlopen(file_url)
+        # validate if the requested file in correct format
+        header = file.info()
+        if header["content-type"] != "text/plain":
+            msg = "Sorry, the requested file content isn't .txt format."
+            return msg
         # perform file operations
         for line in file:
             line = line.decode('utf-8')
@@ -59,7 +64,7 @@ def analyze_text(file_url):
         if n_word > 0:
             avg_word_line = round(n_word / n_line, 2)
             avg_char_line = round(n_char / n_line, 2)
-            avg_char_word = round(n_char / n_word, 2)
+            avg_char_word = round(n_letter / n_word, 2)
             for key, value in words.items():
                 if value == 1:
                     u_words.append(key)

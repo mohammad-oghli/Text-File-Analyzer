@@ -75,7 +75,7 @@ You can also test it on any file link, check this text file sample:
 
 https://drive.google.com/uc?export=download&id=1cQqW8p9tPHexhwS0Iw_Rs-lBgk8R47ri
 
-You can also call the function using `curl` in **git** command line or **terminal** using the following command:
+You can also call the function using `curl` in **git** command line or **terminal** with the following command:
 <pre>
 curl -X POST "https://app.daisi.io/pebble-api/pebbles/b82adc6f-6869-4b06-abe9-6d0fedb36ed8/compute/analyze_text" -H "Content-Type: application/json" -d '{"file_url": "_value_"}'
 </pre>

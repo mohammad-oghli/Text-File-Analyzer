@@ -61,6 +61,7 @@ def analyze_text(file_url):
                     chars[char] += 1
             n_word += len(line)
             n_line += 1
+        #file.close()
         if n_word > 0:
             avg_word_line = round(n_word / n_line, 2)
             avg_char_line = round(n_char / n_line, 2)
@@ -74,7 +75,12 @@ def analyze_text(file_url):
             for key, value in chars.items():
                 if value == 1:
                     less_chars.append(key)
-        file.close()
+
+        top_words = Counter(words).most_common(3)
+        top_chars = Counter(chars).most_common(3)
+        top_s_words = Counter(s_words).most_common(3)
+        f_size = round(n_char / 1024, 2)
+
     except urllib.error.URLError:
         msg = "Sorry, the requested file link is invalid."
         return msg
@@ -82,23 +88,18 @@ def analyze_text(file_url):
         msg = "Sorry, the file does not exist."
         return msg
 
-    top_words = Counter(words).most_common(3)
-    top_chars = Counter(chars).most_common(3)
-    top_s_words = Counter(s_words).most_common(3)
-    f_size = round(n_char / 1024, 2)
-
     summary = f"""____________Summary______________
-   File Link: {file_url}
-   Total words: {n_word}
-   Total letters: {n_letter}
-   Total lines: {n_line}
-   Average words per line: {avg_word_line}
-   Average characters per line: {avg_char_line}
-   Average characters per word: {avg_char_word}
-   Most common words: {top_words[0][0]}, {top_words[1][0]}, {top_words[2][0]}
-   Most common letters: {top_chars[0][0]}, {top_chars[1][0]}, {top_chars[2][0]}
-   Longest word: {longest_word}
-   Estimate file size: {f_size} KB
+File Link: {file_url}
+Total words: {n_word}
+Total letters: {n_letter}
+Total lines: {n_line}
+Average words per line: {avg_word_line}
+Average characters per line: {avg_char_line}
+Average characters per word: {avg_char_word}
+Most common words: {top_words[0][0]}, {top_words[1][0]}, {top_words[2][0]}
+Most common letters: {top_chars[0][0]}, {top_chars[1][0]}, {top_chars[2][0]}
+Longest word: {longest_word}
+Estimate file size: {f_size} KB
    """
     text['s'] = summary
     text['letters'] = n_letter

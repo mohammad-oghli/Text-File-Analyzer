@@ -75,12 +75,12 @@ def analyze_text(file_url):
             for key, value in chars.items():
                 if value == 1:
                     less_chars.append(key)
+            top_words = Counter(words).most_common(3)
+            top_chars = Counter(chars).most_common(3)
+            top_s_words = Counter(s_words).most_common(3)
 
-        top_words = Counter(words).most_common(3)
-        top_chars = Counter(chars).most_common(3)
-        top_s_words = Counter(s_words).most_common(3)
         f_size = round(n_char / 1024, 2)
-
+        
     except urllib.error.URLError:
         msg = "Sorry, the requested file link is invalid."
         return msg

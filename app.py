@@ -80,7 +80,7 @@ def analyze_text(file_url):
             top_s_words = Counter(s_words).most_common(3)
 
         f_size = round(n_char / 1024, 2)
-        
+
     except urllib.error.URLError:
         msg = "Sorry, the requested file link is invalid."
         return msg

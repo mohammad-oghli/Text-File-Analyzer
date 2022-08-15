@@ -13,7 +13,7 @@ Step 1 : Load the Daisi
 import pydaisi as pyd
 text_file_analyzer = pyd.Daisi("oghli/Text File Analyzer")
 </pre>
-Step 2 : call the `text_file_analyzer` end point, passing input file download link to process and analyze text data
+Step 2 : call the `text_file_analyzer` end point, passing input file download link or file object (streamlit uploaded file) to process and analyze text data
 
 <pre>
 file_link = "https://drive.google.com/uc?export=download&id=1r1Urz_92YixjegWvaW_6cVTJQvGCOmGk"
@@ -33,7 +33,7 @@ text_analytics['s']
 Output look like:
 <pre>
 ____________Summary______________
-   File Link: https://drive.google.com/uc?export=download&id=1r1Urz_92YixjegWvaW_6cVTJQvGCOmGk
+   File Source: https://drive.google.com/uc?export=download&id=1r1Urz_92YixjegWvaW_6cVTJQvGCOmGk
    Total words: 365
    Total letters: 1946
    Total lines: 11
@@ -82,8 +82,9 @@ curl -X POST "https://app.daisi.io/pebble-api/pebbles/b82adc6f-6869-4b06-abe9-6d
 
 just replace the `_value_` with the file link.
 
+`st_ui` included in the app to render the user interface of the application endpoints
+
 Finally, **Daisi** is a Cloud Computing platform running Python serverless functions.
 
 For more info check the documentation link: https://doc.daisi.io/
 
-Don't forget to support me by staring the Daisi if you find it useful.

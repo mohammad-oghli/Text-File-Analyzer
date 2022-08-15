@@ -11,7 +11,7 @@ def analyze_text(file_src):
     Analyze text file data according to different measures
 
     :param
-    file_url(str): Valid download link or file name of the input text file
+    file_url(str): Valid download link or file object of the input text file
 
     :return
     text(dict): Dictionary containing information of text analysis of the input file,

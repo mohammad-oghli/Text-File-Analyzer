@@ -66,7 +66,7 @@ def analyze_text(file_src):
                     chars[char] += 1
             n_word += len(line)
             n_line += 1
-        #file.close()
+        # file.close()
         if n_word > 0:
             avg_word_line = round(n_word / n_line, 2)
             avg_char_line = round(n_char / n_line, 2)
@@ -122,6 +122,7 @@ Estimate file size: {f_size} KB
     text['l_word'] = longest_word
     text['f_size'] = f_size
     return text
+
 
 def st_ui():
     '''

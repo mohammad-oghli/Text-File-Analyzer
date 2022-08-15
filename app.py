@@ -33,56 +33,40 @@ def analyze_text(file_src):
     avg_char_word = 0
     mw_size = 0
     n_char = 0
-    file_url = False
     s_words = defaultdict(lambda: 0, s_words)
     words = defaultdict(lambda: 0, words)
     chars = defaultdict(lambda: 0, chars)
     try:
         # for reading input file in the current directory
-        if "http" not in file_src:
-            file = open(file_src, encoding='utf-8')
+        # file = open(file_src, encoding='utf-8')
+        if type(file_src) != str:
+            file = file_src.readlines()
+            file_src = file_src.name
         else:
             # reading input file from download url
             file = urllib.request.urlopen(file_src)
-            file_url = True
             # validate if the requested file in correct format
             header = file.info()
             if header["content-type"] != "text/plain":
                 msg = "Sorry, the requested file content isn't .txt format."
                 return msg
         # perform file operations
-        if file_url:
-            for line in file:
-                line = line.decode('utf-8')
-                n_char += len(line)
-                line = re.sub(r'[^a-zA-Z]', ' ', line)
-                line = line.split()
-                for word in line:
-                    if len(word) > 3:
-                        words[word] += 1
-                    elif 1 < len(word) <= 3:
-                        s_words[word] += 1
-                    n_letter += len(word)
-                    for char in word:
-                        chars[char] += 1
-                n_word += len(line)
-                n_line += 1
-        else:
-            for line in file:
-                n_char += len(line)
-                line = re.sub(r'[^a-zA-Z]', ' ', line)
-                line = line.split()
-                for word in line:
-                    if len(word) > 3:
-                        words[word] += 1
-                    elif 1 < len(word) <= 3:
-                        s_words[word] += 1
-                    n_letter += len(word)
-                    for char in word:
-                        chars[char] += 1
-                n_word += len(line)
-                n_line += 1
-            file.close()
+        for line in file:
+            line = line.decode('utf-8')
+            n_char += len(line)
+            line = re.sub(r'[^a-zA-Z]', ' ', line)
+            line = line.split()
+            for word in line:
+                if len(word) > 3:
+                    words[word] += 1
+                elif 1 < len(word) <= 3:
+                    s_words[word] += 1
+                n_letter += len(word)
+                for char in word:
+                    chars[char] += 1
+            n_word += len(line)
+            n_line += 1
+        #file.close()
         if n_word > 0:
             avg_word_line = round(n_word / n_line, 2)
             avg_char_line = round(n_char / n_line, 2)
@@ -147,8 +131,7 @@ def st_ui():
     st.header("Upload a text file to analyze its data")
     file = st.file_uploader("Choose a file", type=['txt'], accept_multiple_files=False)
     if file:
-        file_name = file.name
-        analyze_result = analyze_text(file_name)
+        analyze_result = analyze_text(file)
         if type(analyze_result) is dict:
             summary = analyze_result['s']
             st.subheader("Brief Information")
@@ -163,8 +146,7 @@ if __name__ == "__main__":
     # render the app using streamlit ui function
     st_ui()
     # file_url = 'https://drive.google.com/uc?export=download&id=1r1Urz_92YixjegWvaW_6cVTJQvGCOmGk'
-    # file_name = 'sample.txt'
-    # analyze_result = analyze_text(file_name)
+    # analyze_result = analyze_text(file_url)
     # if type(analyze_result) is dict:
     #     summary = analyze_result['s']
     #     print(summary)

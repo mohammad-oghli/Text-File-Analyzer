@@ -123,11 +123,6 @@ Estimate file size: {f_size} KB
     text['f_size'] = f_size
     return text
 
-def read_file():
-    file = open('sample.txt', encoding='utf-8')
-    content = file.read()
-    return content
-
 
 def st_ui():
     '''

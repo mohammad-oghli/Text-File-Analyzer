@@ -82,7 +82,7 @@ curl -X POST "https://app.daisi.io/pebble-api/pebbles/b82adc6f-6869-4b06-abe9-6d
 
 just replace the `_value_` with the file link.
 
-`st_ui` included in the app to render the user interface of the application endpoints
+`st_ui` included in the app to render the user interface of the application endpoints.
 
 Finally, **Daisi** is a Cloud Computing platform running Python serverless functions.
 

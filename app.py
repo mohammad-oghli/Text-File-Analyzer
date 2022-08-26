@@ -129,6 +129,8 @@ def st_ui():
     Render the User Interface of the application endpoints
     '''
     st.title("Text File Analyzer")
+    st.caption("Text Data Mining")
+    st.info("Developed by Oghli")
     st.header("Upload a text file to analyze its data")
     file = st.file_uploader("Choose a file", type=['txt'], accept_multiple_files=False)
     if file:
